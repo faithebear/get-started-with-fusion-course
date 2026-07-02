@@ -1,3 +1,8 @@
+{{
+    config(
+        static_analysis='strict'
+    )
+}}
 with
 
 customers as (
