@@ -21,5 +21,3 @@ models:
       +materialized: view
     marts:
       +materialized: table
-      +state: 
-        lag_tolerance: 1d
