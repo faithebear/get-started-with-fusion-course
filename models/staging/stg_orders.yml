@@ -1,6 +1,9 @@
 models:
   - name: stg_orders
     description: Order data with basic cleaning and transformation applied, one row per order.
+    config: 
+      state: 
+        lag_tolerance: 3h
     data_tests:
       - dbt_utils.expression_is_true:
           arguments:
