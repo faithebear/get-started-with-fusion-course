@@ -1,0 +1,17 @@
+version: 2
+
+seeds:
+  - name: seed_test_with_docs
+    description: "Seed with full column documentation."
+    columns:
+      - name: id
+        description: "Primary key."
+      - name: product_name
+        description: "Name of the investment product."
+      - name: category
+        description: "Asset class category."
+      - name: revenue
+        description: "Revenue attributed to this product."
+
+  - name: seed_test_no_docs
+    description: "Seed with no column documentation."

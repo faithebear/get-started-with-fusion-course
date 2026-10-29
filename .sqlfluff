@@ -1,0 +1,6 @@
+[sqlfluff]
+dialect = snowflake
+rules = ST05,AL06
+
+[sqlfluff:rules:aliasing.length]
+min_alias_length = 3

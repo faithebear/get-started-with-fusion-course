@@ -1,6 +1,6 @@
-with
+{{ config(tags=['staging']) }}
 
-source as (
+with source as (
 
     select * from {{ source('ecom', 'raw_orders') }}
 
@@ -9,8 +9,7 @@ source as (
 renamed as (
 
     select
-
-        ----------  ids
+        ---------- ids
         id as order_id,
         store_id as location_id,
         customer as customer_id,
@@ -21,6 +20,7 @@ renamed as (
         order_total as order_total_cents,
         {{ cents_to_dollars('subtotal') }} as subtotal,
         {{ cents_to_dollars('tax_paid') }} as tax_paid,
+
         {{ cents_to_dollars('order_total') }} as order_total,
 
         ---------- timestamps

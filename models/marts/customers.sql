@@ -1,3 +1,5 @@
+{{ config(tags=['nightly']) }}
+
 with
 
 customers as (

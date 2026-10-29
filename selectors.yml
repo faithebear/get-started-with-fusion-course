@@ -1,0 +1,32 @@
+selectors:
+  - name: marts_tag
+    definition:
+      method: tag
+      value: marts
+
+  - name: nightly_tag
+    definition:
+      method: tag
+      value: nightly
+
+  - name: finance_tag
+    definition:
+      method: tag
+      value: finance
+
+  - name: staging_tag
+    definition:
+      method: tag
+      value: staging
+
+  - name: standard_run
+    description: "Selects all models, excluding models matched by four named tag selectors."
+    definition:
+      method: fqn
+      value: "*"
+      exclude:
+        - union:
+            - selector: marts_tag
+            - selector: nightly_tag
+            - selector: finance_tag
+            - selector: staging_tag

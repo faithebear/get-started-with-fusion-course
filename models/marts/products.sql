@@ -1,3 +1,5 @@
+{{ config(tags=['finance']) }}
+
 with
 
 products as (

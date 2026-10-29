@@ -8,18 +8,26 @@ models:
       - dbt_utils.expression_is_true:
           arguments:
             expression: "lifetime_spend_pretax + lifetime_tax_paid = lifetime_spend"
+    semantic_model:
+      enabled: true
+    agg_time_dimension: first_ordered_at
     columns:
       - name: customer_id
         description: The unique key of the orders mart.
         data_tests:
           - not_null
           - unique
+        entity:
+          type: primary
+          name: customer_id
       - name: customer_name
         description: Customers' full name.
       - name: count_lifetime_orders
         description: Total number of orders a customer has ever placed.
       - name: first_ordered_at
         description: The timestamp when a customer placed their first order.
+        dimension:
+          type: time
       - name: last_ordered_at
         description: The timestamp of a customer's most recent order.
       - name: lifetime_spend_pretax
@@ -34,3 +42,8 @@ models:
           - accepted_values:
               arguments:
                 values: ["new", "returning"]
+    metrics:
+      - name: customer_count
+        type: simple
+        agg: count
+        expr: customer_id
